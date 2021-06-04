@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- Estilos -->
+    <link rel="stylesheet" type="text/css" href="src/toastr.min.css" />
+    <link rel="stylesheet" type="text/css" href="src/funciones.css" />
+    <link rel="stylesheet" type="text/css" href="src/css/bootstrap.min.css" />
+    <!-- JS -->
+    <script src="src/jquery-3.5.0.js"></script>
+    <script src="src/funciones.js"></script>
+    <script src="src/jszip.js"></script>
+    <script src="src/toastr.min.js"></script>
+    <script src="src/FileSaver.min.js-1.3.8.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body class="WEBScreen">
+    <header>
+      <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <div class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand" href="#">MJCodex</a>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >Inicio</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Funciones</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link disabled"
+                  href="#"
+                  tabindex="-1"
+                  aria-disabled="true"
+                  >Próximamente</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+      <div id="WEB" class="container border border-secondary bg-light">
+        <div class="row mb-3 tTabla">
+          <div class="col-12">
+            <h2 id="lista" class="p-3 mb-2 bg-light text-dark">
+              Refactor .KMZ de Google Earth Pro (XML)
+            </h2>
+            <p>
+              Requiere un archivo .kmz de Google Earth Pro. Agregará el tag
+              nombre 'name' y lo llenará con el contenido de descripción
+              'description' extrayendo el prefijo indicado (Por defecto 'NEM' y 'NEA',
+              prefijos para postes);
+            </p>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-12">
+            <form class="row g-3">
+              <div class="mb-3">
+                <label for="formFile" class="form-label">Seleccionar .KMZ</label>
+                <input id="zip" class="form-control" type="file">
+              </div>
+            <div>
+              <label for="prefix" class="form-label">Prefijo</label>
+              <input type="text" class="form-control" id="prefix" pattern="^[A-Za-z]+$" placeholder="NEA, NEM...">
+            </div>
+            <div class="col-3">
+              <button onclick="addList();" type="button" class="btn btn-outline-dark">Agregar</button>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Prefijos para procesar</label>
+              <ul id="list" class="list-group">
+              </ul>
+            </div>
+          </form>
+          </div>
+        </div>
+        <div class="row mb-3 tTabla">
+          <div class="col-12">
+            <button onclick="openZIP();" class="btn btn-outline-primary w-25">Procesar</button>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>
