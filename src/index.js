@@ -41,6 +41,10 @@ function openZIP() {
       zip.file('doc.kml', xmlDoc);
       zip.generateAsync({ type: "blob" }).then(function (content) {
           saveAs(content, input.files[0].name);
+          toastr.success("Se ha generado con éxito",'Procesar .KMZ');
+          setTimeout(function() {
+            window.location.reload();
+          }, 3000);
         });
     },
     function () {

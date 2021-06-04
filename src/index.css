@@ -38,3 +38,8 @@ body #toast-container > .toast-warning {
   background-color: red;
   box-shadow: none;
 }
+body #toast-container > .toast-success {
+  opacity: 0.9;
+  background-color: green;
+  box-shadow: none;
+}
