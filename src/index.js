@@ -83,38 +83,3 @@ function getPrefix(){
   }
   return null;
 }
-/* function toZIP() {
-  var zip = new JSZip();
-  // Agrega un archivo de texto
-  zip.file("Hello.txt", "Hello World\n");
-  // Genera un directorio dentro de la estructura de archivos Zip
-  var img = zip.folder("images");
-  // Agregar un archivo al directorio, en este caso una imagen con URI de datos como contenido
-  //img.file("smile.gif", imgData, {base64: true});
-  // Genera el archivo zip de forma asíncrona
-  zip.generateAsync({ type: "blob" }).then(function (content) {
-      // Descargar el archivo Zip
-      saveAs(content, "archive.zip");
-    });
-} */
-/* function xmlEdit({xml}) {
-    $.get("doc.kml", function (xml) { $(xml).find("Placemark").each(function () {
-        let description = $(this).find("description").text();
-        let CODE = "NEM";
-        let nameInicio = description.indexOf(CODE);
-        if (nameInicio != -1) {
-          var nameEnd;
-          for (let i = nameInicio + CODE.length; i < description.length; i++) {
-            if (isNaN(description.charAt(i))) {
-              nameEnd = i;
-              break;
-            }
-          }
-          let name = description.substring(nameInicio, nameEnd);
-          $(this).append(`<name>${name}</name>`);
-        }
-      });
-      saveXML({ xml: xml }); 
-      return xml;
-    });
-} */
