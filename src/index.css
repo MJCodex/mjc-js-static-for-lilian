@@ -1,45 +1,70 @@
 .tTabla {
-  border-collapse: collapse;
-  width: 100%;
-  text-align: center;
-  align-items: center;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
 th,
 td, tr {
-  align-items: center;
-  width: 50%;
-  text-align: center;
-  vertical-align: center;
+    align-items: center;
+    width: 50%;
+    text-align: center;
+    vertical-align: center;
 }
-input, button{
+
+input, button {
     width: 100%;
 }
+
 .dDiv {
-  align-items: center;
-  text-align: center;
+    align-items: center;
+    text-align: center;
 }
+
 #WEB {
-  width: 70%;
-  margin: 100px auto;
+    width: 70%;
+    margin: 100px auto;
 }
-.WEBScreen{
+
+.WEBScreen {
     width: 100%;
     height: 100%;
     background: rgb(231, 231, 231);
 }
+
 body #toast-container > .toast-info {
-  opacity: 0.9;
-  background-color: orange;
-  box-shadow: none;
+    opacity: 0.9;
+    background-color: orange;
+    box-shadow: none;
 }
+
 body #toast-container > .toast-warning {
-  opacity: 0.9;
-  background-color: red;
-  box-shadow: none;
+    opacity: 0.9;
+    background-color: red;
+    box-shadow: none;
 }
+
 body #toast-container > .toast-success {
-  opacity: 0.9;
-  background-color: green;
-  box-shadow: none;
+    opacity: 0.9;
+    background-color: green;
+    box-shadow: none;
+}
+
+.list-group {
+    width: fit-content;
+    flex-direction: row !important;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.list-group-item li, svg {
+    margin-left: 10px;
+    cursor: pointer;
+    color: tomato;
+}
+
+.input-group {
+    margin-top: 0;
 }

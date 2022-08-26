@@ -1,5 +1,16 @@
 const DEFAULT_PREFIX = ['NEM', 'NEA'];
 
+window.addEventListener('load', function () {
+    showOrHiddePrefixContainer();
+});
+
+function showOrHiddePrefixContainer() {
+    const ul = document.getElementById("list");
+    const prefixContainer = document.getElementById("prefix-container");
+    prefixContainer.hidden = ul.childNodes.length <= 1;
+}
+
+
 function xmlRefactor({xml, prefix}) {
     const xmlDoc = $.parseXML(xml);
     $(xmlDoc).find("Placemark").each(function () {
@@ -63,15 +74,30 @@ function addList() {
     const str = document.getElementById("prefix");
     const ul = document.getElementById("list");
     const li = document.createElement("li");
+    const icon = document.createElement("i")
+    const allPrefix = getPrefix();
+    if (allPrefix && allPrefix.includes(str.value)) {
+        toastr.info(`"${str.value}" ya existe en la lista`, 'Prefijos');
+        return;
+    }
     if (str.checkValidity() && str.value) {
         li.appendChild(document.createTextNode(str.value));
+        icon.title = 'Borrar';
+        icon.classList.add('fa-solid');
+        icon.classList.add('fa-trash-can');
+        li.appendChild(icon);
         li.classList.add('list-group-item');
         li.classList.add('item');
+        li.addEventListener('click', (_) => {
+            li.parentNode.removeChild(li);
+            showOrHiddePrefixContainer();
+        });
         ul.appendChild(li);
         str.value = '';
     } else {
         toastr.info("Solo letras", 'Prefijos');
     }
+    showOrHiddePrefixContainer();
 }
 
 function getPrefix() {
@@ -79,7 +105,7 @@ function getPrefix() {
     if (items.length) {
         const setPrefix = [];
         for (let i = 0; i < items.length; i++) {
-            setPrefix.push(items[i].innerHTML);
+            setPrefix.push(items[i].firstChild.nodeValue);
         }
         return setPrefix;
     }
