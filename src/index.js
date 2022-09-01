@@ -41,7 +41,7 @@ function getName({str, prefix}) {
 
 function openZIP() {
     const selectedZip = document.getElementById("zip").files[0];
-    const isZip = selectedZip.name.includes("zip") || selectedZip.type.includes("zip")
+    const isZip = selectedZip?.name.includes("zip") || selectedZip?.type.includes("zip")
     if (isZip) {
         let xml;
         const zip = new JSZip();
@@ -65,7 +65,7 @@ function openZIP() {
                 toastr.error("Este no es un archivo válido de Google Earth Pro. Selecciona un archivo válido", 'error');
             }
         }, function () {
-            toastr.error("Selecciona un archivo válido", 'Procesar');
+            toastr.error("Ocurrió un error al procesar el archivo. Asegúrate que el archivo es válido y que está en buen estado", 'Procesar');
         });
     } else {
         toastr.error("Selecciona un archivo válido", 'Procesar');
