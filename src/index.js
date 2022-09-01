@@ -39,7 +39,7 @@ function getName({str, prefix}) {
     return name;
 }
 
-function openZIP() {
+function processZIP() {
     const selectedZip = document.getElementById("zip").files[0];
     const isZip = selectedZip?.name.includes("zip") || selectedZip?.type.includes("zip")
     if (isZip) {
