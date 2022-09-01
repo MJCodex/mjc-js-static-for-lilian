@@ -36,19 +36,25 @@ input, button {
 
 body #toast-container > .toast-info {
     opacity: 0.9;
-    background-color: orange;
+    background-color: dodgerblue;
     box-shadow: none;
 }
 
 body #toast-container > .toast-warning {
     opacity: 0.9;
-    background-color: red;
+    background-color: orange;
     box-shadow: none;
 }
 
 body #toast-container > .toast-success {
     opacity: 0.9;
     background-color: green;
+    box-shadow: none;
+}
+
+body #toast-container > .toast-error {
+    opacity: 0.9;
+    background-color: orangered;
     box-shadow: none;
 }
 
