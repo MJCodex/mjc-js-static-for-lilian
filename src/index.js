@@ -40,28 +40,36 @@ function getName({str, prefix}) {
 }
 
 function openZIP() {
-    let xml;
-    const input = document.getElementById("zip");
-    const zip = new JSZip();
-    let prefix = getPrefix();
-    if (!prefix) prefix = DEFAULT_PREFIX;
-    zip.loadAsync(input.files[0]).then(async function (zip) {
-            xml = await zip.file("doc.kml").async("string");
-            let xmlDoc = xmlRefactor({xml: xml, prefix: prefix});
-            zip.remove('doc.kml');
-            zip.file('doc.kml', xmlDoc);
-            zip.generateAsync({type: "blob"}).then(function (content) {
-                saveAs(content, input.files[0].name);
-                toastr.success("Se ha generado con éxito", 'Procesar .KMZ');
-                setTimeout(function () {
-                    window.location.reload();
-                }, 3000);
-            });
-        },
-        function () {
-            toastr.info("Selecciona un archivo válido", 'Procesar');
-        }
-    );
+    const selectedZip = document.getElementById("zip").files[0];
+    const isZip = selectedZip.name.includes("zip") || selectedZip.type.includes("zip")
+    if (isZip) {
+        let xml;
+        const zip = new JSZip();
+        let prefix = getPrefix();
+        if (!prefix) prefix = DEFAULT_PREFIX;
+        zip.loadAsync(selectedZip).then(async function (zip) {
+            const existKMLDoc = zip.file("doc.kml");
+            if (existKMLDoc) {
+                xml = await zip.file("doc.kml").async("string");
+                let xmlDoc = xmlRefactor({xml: xml, prefix: prefix});
+                zip.remove('doc.kml');
+                zip.file('doc.kml', xmlDoc);
+                zip.generateAsync({type: "blob"}).then(function (content) {
+                    saveAs(content, selectedZip.name);
+                    toastr.success("Se ha generado con éxito", 'Procesar .KMZ');
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 3000);
+                });
+            } else {
+                toastr.error("Este no es un archivo válido de Google Earth Pro. Selecciona un archivo válido", 'error');
+            }
+        }, function () {
+            toastr.error("Selecciona un archivo válido", 'Procesar');
+        });
+    } else {
+        toastr.error("Selecciona un archivo válido", 'Procesar');
+    }
 }
 
 function saveXML({xml}) {
