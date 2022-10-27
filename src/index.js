@@ -41,7 +41,7 @@ function getName({str, prefix}) {
 
 function processZIP() {
     const selectedZip = document.getElementById("zip").files[0];
-    const isZip = selectedZip?.name.includes("zip") || selectedZip?.type.includes("zip")
+    const isZip = selectedZip?.name.includes("kmz") || selectedZip?.type.includes("kmz")
     if (isZip) {
         let xml;
         const zip = new JSZip();
