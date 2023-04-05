@@ -103,7 +103,7 @@ function addList() {
         ul.appendChild(li);
         str.value = '';
     } else {
-        toastr.info("Solo letras", 'Prefijos');
+        toastr.info("Prefijo no válido [ A-Z a-z 0-9 ]", 'Prefijos');
     }
     showOrHiddePrefixContainer();
 }
